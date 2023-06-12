@@ -1,0 +1,33 @@
+{
+    "name": "ninos/sae_php",
+    "description": "SAE PHP",
+    "type": "project",
+    "license": "Copyleft",
+    "autoload": {
+        "psr-4": {
+            "": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "sauv0037",
+            "email": "nino.sauvageot@etudiant.univ-reims.fr"
+        }
+    ],
+    "require": {
+      "ext-pdo": "*"
+    },
+
+    "scripts": {
+        "start:l" : "bin/run-server.sh",
+        "start:w" : "bin/run-server.bat",
+        "test:cs": "php vendor/bin/php-cs-fixer fix --dry-run --config .php-cs-fixer.php",
+        "fix:cs": "php vendor/bin/php-cs-fixer fix --config .php-cs-fixer.php"
+    },
+    "config": {
+        "process-timeout": 0
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.17"
+    }
+}
