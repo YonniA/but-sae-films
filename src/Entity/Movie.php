@@ -7,7 +7,7 @@ namespace Entity;
 class Movie
 {
     private int $id;
-    private string $name;
+    private string $title;
 
     /**
      * @return int
@@ -19,9 +19,9 @@ class Movie
     /**
      * @return string
      */
-    public function getName(): string
+    public function getTitle(): string
     {
-        return $this->name;
+        return $this->title;
     }
 
 
