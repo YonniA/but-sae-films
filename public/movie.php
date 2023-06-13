@@ -23,11 +23,12 @@ try {
 $appWebPage = new AppWebPage("Films - ".$stmt->getTitle());
 $appWebPage->appendContent('<div class="list">');
 $appWebPage->appendContent("<img src='image.php?imageId={$stmt->getPosterId()}' alt='Poster de {$stmt->getTitle()}'>");
-$appWebPage->appendContent("<p>{$stmt->getTitle()}</p>");
-$appWebPage->appendContent("<p>{$stmt->getReleaseDate()}</p>");
-$appWebPage->appendContent("<p>{$stmt->getOriginalTitle()}</p>");
-$appWebPage->appendContent("<p>{$stmt->getTagline()}</p>");
-$appWebPage->appendContent("<p>{$stmt->getRuntime()} minutes</p>");
-$appWebPage->appendContent("<p>{$stmt->getOverview()}</p>");
+$appWebPage->appendContent("<p>Titre : {$stmt->getTitle()}</p>");
+$appWebPage->appendContent("<p>Date : {$stmt->getReleaseDate()}</p>");
+$appWebPage->appendContent("<p>Nom original : {$stmt->getOriginalTitle()}</p>");
+$appWebPage->appendContent("<p>Slogan : {$stmt->getTagline()}</p>");
+$appWebPage->appendContent("<p>Durée : {$stmt->getRuntime()} minutes</p>");
+$appWebPage->appendContent("<p>Résumé : {$stmt->getOverview()}</p>");
+$appWebPage->appendContent('<div class="list">');
 
 echo $appWebPage->toHTML();
