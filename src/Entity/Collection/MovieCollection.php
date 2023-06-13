@@ -14,9 +14,9 @@ class MovieCollection
     {
         $stmt = MyPDO::getInstance()->prepare(
             <<<'SQL'
-SELECT id, title
+SELECT *
 FROM movie
-ORDER BY title;
+ORDER BY title
 SQL
         );
         $stmt->execute();
