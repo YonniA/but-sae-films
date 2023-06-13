@@ -37,6 +37,18 @@ body
     flex-wrap: wrap;
     height:100%;
     overflow-y: auto;
+    justify-content: space-around;
+    gap:2rem;
+}
+.movie
+{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 15px;
+    background-color: white;
+    border-radius: 10px;
+    transition: .15s;
 }
 
 .footer
@@ -49,4 +61,61 @@ a
 {
     color: black;
     text-decoration: none;
+}
+.movie img,.movie
+{
+    width: 200px;
+}
+.movie:hover
+{
+    background-color: #75b1ff;
+}
+.movie:active
+{
+    background-color: #0c214a;
+    color: white;
+}
+.movie-description
+{
+    display: flex;
+    gap: 2rem;
+    padding: 15px;
+    background-color: white;
+    border-radius: 10px;
+}
+.text
+{
+    display: flex;
+    flex-direction: column;
+}
+.text__header
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.people-list__people
+{
+    display: flex;
+    gap: 2rem;
+    padding: 15px;
+    background-color: white;
+    border-radius: 10px;
+    transition: .15s;
+}
+.people-list
+{
+    display: flex;
+    gap: 2rem;
+    flex-direction: column;
+    width: 100%;
+}
+.people-list__people:hover
+{
+    background-color: #75b1ff;
+}
+.people-list__people:active
+{
+    background-color: #0c214a;
+    color: white;
 }
