@@ -9,9 +9,9 @@ use PDO;
 
 class People
 {
-    private int $avatarId;
-    private int $birthday;
-    private int $deathday;
+    private ?int $avatarId;
+    private ?string $birthday;
+    private ?string $deathday;
     private string $name;
     private string $biography;
     private string $placeOfBirth;
@@ -20,7 +20,7 @@ class People
     /**
      * @return int
      */
-    public function getAvatarId(): int
+    public function getAvatarId(): ?int
     {
         return $this->avatarId;
     }
@@ -28,7 +28,7 @@ class People
     /**
      * @return int
      */
-    public function getBirthday(): int
+    public function getBirthday(): ?string
     {
         return $this->birthday;
     }
@@ -36,7 +36,7 @@ class People
     /**
      * @return int
      */
-    public function getDeathday(): int
+    public function getDeathday(): ?string
     {
         return $this->deathday;
     }
