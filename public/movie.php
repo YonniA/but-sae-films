@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use Entity\Movie;
+use Entity\People;
 use Html\AppWebPage;
 use Entity\Exception\EntityNotFoundException;
 
@@ -30,5 +31,14 @@ $appWebPage->appendContent("<p>Slogan : {$stmt->getTagline()}</p>");
 $appWebPage->appendContent("<p>Durée : {$stmt->getRuntime()} minutes</p>");
 $appWebPage->appendContent("<p>Résumé : {$stmt->getOverview()}</p>");
 $appWebPage->appendContent('<div class="list_people">');
+$casts = $stmt->getCast();
+foreach ($casts as $cast) {
+    $people = People::findById($cast->getPeopleId());
+    $appWebPage->appendContent("<a href=''>"."\n");
+    $appWebPage->appendContent("<img src='image.php?imageId={$people->getAvatarId()} alt='{$people->getName()}'>"."\n");
+    $appWebPage->appendContent("<p>Rôle : {$appWebPage->escapeString($cast->getRole())}</p><p>Nom : {$appWebPage->escapeString($people->getName())}</p>"."\n");
+    $appWebPage->appendContent("</a>");
+}
 
+$appWebPage->appendContent('</div></div>');
 echo $appWebPage->toHTML();
