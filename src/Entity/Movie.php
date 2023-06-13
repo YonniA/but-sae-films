@@ -24,7 +24,7 @@ class Movie
     }/**
      * @return string
      */
-    public function getName(): string
+    public function getTitle(): string
     {
         return $this->name;
     }/**
