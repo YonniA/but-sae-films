@@ -4,6 +4,10 @@ declare(strict_types=1);
 
 namespace Entity;
 
+use Database\MyPdo;
+use Entity\Exception\EntityNotFoundException;
+use PDO;
+
 class Movie
 {
     private int $id;
@@ -70,6 +74,23 @@ class Movie
     {
         return $this->tagline;
     }
-
+    public static function findById(int $id): Movie
+    {
+        $stmt = MyPdo::getInstance()->prepare(
+            <<<SQL
+SELECT *
+FROM movie
+WHERE id = :id;
+SQL
+        );
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+        $stmt->setFetchMode(PDO::FETCH_CLASS, Movie::class);
+        $res = $stmt->fetch();
+        if (!$res) {
+            throw new EntityNotFoundException();
+        }
+        return $res;
+    }
 
 }

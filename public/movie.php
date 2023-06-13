@@ -1,12 +1,13 @@
 <?php
+
 declare(strict_types=1);
 
 use Entity\Movie;
 use Html\AppWebPage;
 use Entity\Exception\EntityNotFoundException;
 
-if (!empty($_GET["artistId"]) && ctype_digit($_GET["artistId"])) {
-    $artistId=(int)$_GET["artistId"];
+if (!empty($_GET["movieId"]) && ctype_digit($_GET["movieId"])) {
+    $movieId=(int)$_GET["movieId"];
 
 } else {
     header("location: index.php");
@@ -14,9 +15,19 @@ if (!empty($_GET["artistId"]) && ctype_digit($_GET["artistId"])) {
 }
 
 try {
-    $stmt = Movie::findById($artistId);
+    $stmt = Movie::findById($movieId);
 } catch (EntityNotFoundException) {
     header('HTTP/1.0 404 Not Found');
     exit(404);
 }
-echo 'test';
+$appWebPage = new AppWebPage("Films - ".$stmt->getTitle());
+$appWebPage->appendContent('<div class="list">');
+$appWebPage->appendContent("<img src='image.php?imageId={$stmt->getPosterId()}' alt='Poster de {$stmt->getTitle()}'>");
+$appWebPage->appendContent("<p>{$stmt->getTitle()}</p>");
+$appWebPage->appendContent("<p>{$stmt->getReleaseDate()}</p>");
+$appWebPage->appendContent("<p>{$stmt->getOriginalTitle()}</p>");
+$appWebPage->appendContent("<p>{$stmt->getTagline()}</p>");
+$appWebPage->appendContent("<p>{$stmt->getRuntime()} minutes</p>");
+$appWebPage->appendContent("<p>{$stmt->getOverview()}</p>");
+
+echo $appWebPage->toHTML();
