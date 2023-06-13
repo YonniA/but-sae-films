@@ -29,6 +29,6 @@ $appWebPage->appendContent("<p>Nom original : {$stmt->getOriginalTitle()}</p>");
 $appWebPage->appendContent("<p>Slogan : {$stmt->getTagline()}</p>");
 $appWebPage->appendContent("<p>Durée : {$stmt->getRuntime()} minutes</p>");
 $appWebPage->appendContent("<p>Résumé : {$stmt->getOverview()}</p>");
-$appWebPage->appendContent('<div class="list">');
+$appWebPage->appendContent('<div class="list_people">');
 
 echo $appWebPage->toHTML();
