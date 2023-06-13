@@ -54,7 +54,7 @@ class WebPage
      */
     public function appendToHead(string $content): void
     {
-        $this->head.=$content;
+        $this->head.=$content."\n";
     }
 
     /** Ajouter un contenu CSS dans $this->head.
@@ -63,7 +63,7 @@ class WebPage
      */
     public function appendCss(string $css): void
     {
-        $this->head.="<style>".$css."</style>";
+        $this->head.="<style>".$css."</style>\n";
     }
 
 
@@ -82,7 +82,7 @@ class WebPage
      */
     public function appendJs(string $js): void
     {
-        $this->head.="<script>".$js."</script>";
+        $this->head.="<script>".$js."</script>"."\n";
     }
 
     /** Ajouter l'URL d'un script JavaScript dans $this->head.
@@ -91,7 +91,7 @@ class WebPage
      */
     public function appendJsUrl(string $url): void
     {
-        $this->head.="<script src=\"".$url."\"></script>";
+        $this->head.="<script src=\"".$url."\"></script>"."\n";
     }
 
     /** Ajouter un contenu dans $this->body.
@@ -100,7 +100,7 @@ class WebPage
      */
     public function appendContent(string $content): void
     {
-        $this->body .= $content;
+        $this->body .= $content."\n";
     }
 
     /**
