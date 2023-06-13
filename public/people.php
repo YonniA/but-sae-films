@@ -3,7 +3,6 @@
 declare(strict_types=1);
 
 use Entity\Exception\EntityNotFoundException;
-use Entity\Movie;
 use Entity\People;
 use Html\AppWebPage;
 
@@ -29,4 +28,5 @@ $appWebPage->appendContent("<p>Lieu de naissance : {$stmt->getPlaceOfBirth()}</p
 $appWebPage->appendContent("<p>Date : {$stmt->getBirthday()} - {$stmt->getDeathday()}</p>");
 $appWebPage->appendContent("<p>Biographie : {$stmt->getBiography()}</p>");
 $appWebPage->appendContent('<div class="list_movie">');
+
 echo $appWebPage->toHTML();

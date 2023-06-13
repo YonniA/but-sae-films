@@ -91,4 +91,17 @@ SQL
         return $res;
     }
 
+    public function getCast(): array
+    {
+        $stmt = MyPdo::getInstance()->prepare(
+            <<<'SQL'
+SELECT *
+FROM cast
+WHERE peopleId = :id
+SQL
+        );
+        $stmt->bindValue(':id', $this->getId(), PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_CLASS, Cast::class);
+    }
 }
