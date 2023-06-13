@@ -7,7 +7,6 @@ namespace Entity;
 class Movie
 {
     private int $id;
-    private string $name;
     private int $posterId;
     private string $originalLanguage;
     private string $originalTitle;
@@ -15,6 +14,7 @@ class Movie
     private string $releaseDate;
     private int $runtime;
     private string $tagline;
+    private string $title;
     /**
      * @return int
      */
@@ -26,7 +26,7 @@ class Movie
      */
     public function getTitle(): string
     {
-        return $this->name;
+        return $this->title;
     }/**
      * @return int
      */
