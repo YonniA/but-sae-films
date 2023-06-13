@@ -7,10 +7,10 @@ use Entity\Exception\ParameterException;
 use Entity\Image;
 
 try {
-    if(isset($_GET['imageId'])) {
+    if(!isset($_GET['imageId'])) {
         throw new ParameterException();
     }
-    $image = Image::findById($_GET['imageId']);
+    $image = Image::findById((int)$_GET['imageId']);
     echo $image->getJpeg();
     header('Content-type : image/jpeg');
 } catch (ParameterException) {

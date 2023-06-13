@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Entity;
 
 use Database\MyPdo;
+use Entity\Exception\EntityNotFoundException;
 use PDO;
 
 class Image
@@ -24,7 +25,7 @@ class Image
     {
         return $this->jpeg;
     }
-    public static function findById(int $id): array
+    public static function findById(int $id): Image
     {
         $stmt = MyPDO::getInstance()->prepare(
             <<<'SQL'
@@ -36,8 +37,11 @@ SQL
         $stmt->bindParam(":id", $id);
         $stmt->execute();
         $stmt->setFetchMode(PDO::FETCH_CLASS, Image::class);
-        return $stmt->fetch();
-
+        $res = $stmt->fetch();
+        if (!$res) {
+            throw new EntityNotFoundException();
+        }
+        return $res;
     }
 
 }
