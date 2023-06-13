@@ -34,7 +34,7 @@ $appWebPage->appendContent('<div class="list_people">');
 $casts = $stmt->getCast();
 foreach ($casts as $cast) {
     $people = People::findById($cast->getPeopleId());
-    $appWebPage->appendContent("<a href=''>"."\n");
+    $appWebPage->appendContent("<a href='people.php?peopleId={$cast->getPeopleId()}'>"."\n");
     $appWebPage->appendContent("<img src='image.php?imageId={$people->getAvatarId()} alt='{$people->getName()}'>"."\n");
     $appWebPage->appendContent("<p>Rôle : {$appWebPage->escapeString($cast->getRole())}</p><p>Nom : {$appWebPage->escapeString($people->getName())}</p>"."\n");
     $appWebPage->appendContent("</a>");
