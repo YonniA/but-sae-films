@@ -3,6 +3,10 @@ declare(strict_types=1);
 
 namespace Entity;
 
+use Database\MyPdo;
+use Entity\Exception\EntityNotFoundException;
+use PDO;
+
 class People
 {
     private int $avatarId;
@@ -68,6 +72,23 @@ class People
     {
         return $this->id;
     }
-
+    public static function findById(int $id): People
+    {
+        $stmt = MyPdo::getInstance()->prepare(
+            <<<SQL
+SELECT *
+FROM people
+WHERE id = :id;
+SQL
+        );
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+        $stmt->setFetchMode(PDO::FETCH_CLASS, People::class);
+        $res = $stmt->fetch();
+        if (!$res) {
+            throw new EntityNotFoundException();
+        }
+        return $res;
+    }
 
 }
