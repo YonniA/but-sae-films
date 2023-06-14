@@ -222,4 +222,38 @@ SQL
         return $movie;
     }
 
+    public function insert(): Movie
+    {
+        $stmt = MyPdo::getInstance();
+        if ($this->getId() === null) {
+            $stmt = MyPdo::getInstance()->prepare(
+                <<<'SQL'
+INSERT INTO movie (posterId, originalLanguage, originalTitle, overview, releaseDate, runtime, tagline, title)
+VALUES (:posterId, :originalLanguage, :originalTitle, :overview, :releaseDate, :runtime, :tagline, :title)
+SQL
+            );
+        } else {
+            $stmt = MyPdo::getInstance()->prepare(
+                <<<'SQL'
+INSERT INTO movie (id, posterId, originalLanguage, originalTitle, overview, releaseDate, runtime, tagline, title)
+VALUES (:id, :posterId, :originalLanguage, :originalTitle, :overview, :releaseDate, :runtime, :tagline, :title)
+SQL
+            );
+            $stmt->bindValue(':id', $this->getId(), PDO::PARAM_INT);
+        }
+        $stmt->bindValue(':posterId', $this->getPosterId(), PDO::PARAM_INT);
+        $stmt->bindValue(':originalLanguage', $this->getOriginalLanguage(), PDO::PARAM_STR);
+        $stmt->bindValue(':originalTitle', $this->getOriginalTitle(), PDO::PARAM_STR);
+        $stmt->bindValue(':overview', $this->getOverview(), PDO::PARAM_STR);
+        $stmt->bindValue(':releaseDate', $this->getReleaseDate(), PDO::PARAM_STR);
+        $stmt->bindValue(':runtime', $this->getRuntime(), PDO::PARAM_INT);
+        $stmt->bindValue(':tagline', $this->getTagline(), PDO::PARAM_STR);
+        $stmt->bindValue(':title', $this->getTitle(), PDO::PARAM_STR);
+        $stmt->execute();
+
+        if ($this->getId() === null) {
+            $this->setId((int)(MyPdo::getInstance()->lastInsertId()));
+        }
+        return $this;
+    }
 }
