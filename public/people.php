@@ -45,7 +45,7 @@ foreach ($casts as $cast) {
             <a class='movie-list__movie' href='movie.php?movieId={$cast->getMovieId()}'>
                 <img src='image.php?imageId={$movie->getPosterId()} alt='{$movie->getTitle()}'>
                 <div class="text">
-                    <div class="text__header"
+                    <div class="text__header">
                         <p>Titre : {$appWebPage->escapeString($movie->getTitle())}</p>
                         <p>Date : {$appWebPage->escapeString($movie->getReleaseDate())}</p>
                     </div>
