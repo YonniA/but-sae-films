@@ -21,6 +21,7 @@ class AppWebPage extends WebPage
                 <title>{$this->getTitle()}</title>
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <meta charset="UTF-8">
+                <link rel="shortcut icon" href="img/favicon.ico">
                 {$this->getHead()}
             </head>
             <body>
