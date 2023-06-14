@@ -46,4 +46,19 @@ SQL
         }
         return $res;
     }
+    public function getMovies(): array
+    {
+        $stmt = MyPdo::getInstance()->prepare(
+            <<<'SQL'
+SELECT DISTINCT m.*
+FROM movie m
+    JOIN movie_genre mg on m.id = mg.movieId
+WHERE mg.genreId = :id
+ORDER BY m.title
+SQL
+        );
+        $stmt->bindValue(':id', $this->getId(), PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_CLASS, Movie::class);
+    }
 }
