@@ -22,30 +22,34 @@ try {
     exit(404);
 }
 $appWebPage = new AppWebPage("Films - ".$stmt->getTitle());
-$appWebPage->appendContent('<div class="list">');
-$appWebPage->appendContent('<div class="movie-description">');
-$appWebPage->appendContent("<img src='image.php?imageId={$stmt->getPosterId()}' alt='Poster de {$stmt->getTitle()}'>");
-$appWebPage->appendContent('<div class="text">');
-$appWebPage->appendContent('<div class="text__header">');
-$appWebPage->appendContent("<p>Titre : {$stmt->getTitle()}</p>");
-$appWebPage->appendContent("<p>Date : {$stmt->getReleaseDate()}</p>");
-$appWebPage->appendContent('</div>');
-$appWebPage->appendContent("<p>Nom original : {$stmt->getOriginalTitle()}</p>");
-$appWebPage->appendContent("<p>Slogan : {$stmt->getTagline()}</p>");
-$appWebPage->appendContent("<p>Durée : {$stmt->getRuntime()} minutes</p>");
-$appWebPage->appendContent("<p>Résumé : {$stmt->getOverview()}</p>");
-$appWebPage->appendContent('</div>');
-$appWebPage->appendContent('</div>');
-$appWebPage->appendContent('<div class="people-list">');
+$appWebPage->appendContent(<<<HTML
+            <div class="list">
+                <div class="movie-description">
+                    <img src='image.php?imageId={$stmt->getPosterId()}' alt='Poster de {$stmt->getTitle()}'>
+                    <div class="text">')
+                        <div class="text__header">
+                            <p>Titre : {$stmt->getTitle()}</p>
+                            <p>Date : {$stmt->getReleaseDate()}</p>
+                    </div>
+                    <p>Nom original : {$stmt->getOriginalTitle()}</p>
+                    <p>Slogan : {$stmt->getTagline()}</p>
+                    <p>Durée : {$stmt->getRuntime()} minutes</p>
+                    <p>Résumé : {$stmt->getOverview()}</p>
+                </div>
+            </div>
+            <div class="people-list">
+            HTML);
 $casts = $stmt->getCast();
 foreach ($casts as $cast) {
     $people = People::findById($cast->getPeopleId());
-    $appWebPage->appendContent("<a class='people-list__people' href='people.php?peopleId={$cast->getPeopleId()}'>"."\n");
-    $appWebPage->appendContent("<img src='image.php?imageId={$people->getAvatarId()} alt='{$people->getName()}'>"."\n");
-    $appWebPage->appendContent('<div class="text">');
-    $appWebPage->appendContent("<p>Rôle : {$appWebPage->escapeString($cast->getRole())}</p><p>Nom : {$appWebPage->escapeString($people->getName())}</p>"."\n");
-    $appWebPage->appendContent('</div>');
-    $appWebPage->appendContent("</a>");
+    $appWebPage->appendContent(<<<HTML
+                            <a class='people-list__people' href='people.php?peopleId={$cast->getPeopleId()}'>
+                                <img src='image.php?imageId={$people->getAvatarId()} alt='{$people->getName()}'>
+                                <div class="text">
+                                    <p>Rôle : {$appWebPage->escapeString($cast->getRole())}</p><p>Nom : {$appWebPage->escapeString($people->getName())}</p>
+                                </div>
+                            </a>
+HTML);
 }
 
 $appWebPage->appendContent('</div></div>');
