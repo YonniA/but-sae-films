@@ -10,69 +10,179 @@ use PDO;
 
 class Movie
 {
-    private int $id;
-    private int $posterId;
-    private string $originalLanguage;
-    private string $originalTitle;
-    private string $overview;
-    private string $releaseDate;
-    private int $runtime;
-    private string $tagline;
-    private string $title;
+    private ?int $id;
+    private ?int $posterId;
+    private ?string $originalLanguage;
+    private ?string $originalTitle;
+    private ?string $overview;
+    private ?string $releaseDate;
+    private ?int $runtime;
+    private ?string $tagline;
+    private ?string $title;
+    private function __construct()
+    {
+    }
+
     /**
-     * @return int
+     * @return int|null
      */
-    public function getId(): int
+    public function getId(): ?int
     {
         return $this->id;
-    }/**
-     * @return string
+    }
+
+    /**
+     * @param int|null $id
+     * @return Movie
      */
-    public function getTitle(): string
+    public function setId(?int $id): Movie
     {
-        return $this->title;
-    }/**
-     * @return int
+        $this->id = $id;
+        return $this;
+    }
+
+    /**
+     * @return int|null
      */
-    public function getPosterId(): int
+    public function getPosterId(): ?int
     {
         return $this->posterId;
-    }/**
-     * @return string
+    }
+
+    /**
+     * @param int|null $posterId
+     * @return Movie
      */
-    public function getOriginalLanguage(): string
+    public function setPosterId(?int $posterId): Movie
+    {
+        $this->posterId = $posterId;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getOriginalLanguage(): ?string
     {
         return $this->originalLanguage;
-    }/**
-     * @return string
+    }
+
+    /**
+     * @param string|null $originalLanguage
+     * @return Movie
      */
-    public function getOriginalTitle(): string
+    public function setOriginalLanguage(?string $originalLanguage): Movie
+    {
+        $this->originalLanguage = $originalLanguage;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getOriginalTitle(): ?string
     {
         return $this->originalTitle;
-    }/**
-     * @return string
+    }
+
+    /**
+     * @param string|null $originalTitle
+     * @return Movie
      */
-    public function getOverview(): string
+    public function setOriginalTitle(?string $originalTitle): Movie
+    {
+        $this->originalTitle = $originalTitle;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getOverview(): ?string
     {
         return $this->overview;
-    }/**
-     * @return string
+    }
+
+    /**
+     * @param string|null $overview
+     * @return Movie
      */
-    public function getReleaseDate(): string
+    public function setOverview(?string $overview): Movie
+    {
+        $this->overview = $overview;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getReleaseDate(): ?string
     {
         return $this->releaseDate;
-    }/**
-     * @return int
+    }
+
+    /**
+     * @param string|null $releaseDate
+     * @return Movie
      */
-    public function getRuntime(): int
+    public function setReleaseDate(?string $releaseDate): Movie
+    {
+        $this->releaseDate = $releaseDate;
+        return $this;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getRuntime(): ?int
     {
         return $this->runtime;
-    }/**
-     * @return string
+    }
+
+    /**
+     * @param int|null $runtime
+     * @return Movie
      */
-    public function getTagline(): string
+    public function setRuntime(?int $runtime): Movie
+    {
+        $this->runtime = $runtime;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getTagline(): ?string
     {
         return $this->tagline;
+    }
+
+    /**
+     * @param string|null $tagline
+     * @return Movie
+     */
+    public function setTagline(?string $tagline): Movie
+    {
+        $this->tagline = $tagline;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getTitle(): ?string
+    {
+        return $this->title;
+    }
+
+    /**
+     * @param string|null $title
+     * @return Movie
+     */
+    public function setTitle(?string $title): Movie
+    {
+        $this->title = $title;
+        return $this;
     }
     public static function findById(int $id): Movie
     {
