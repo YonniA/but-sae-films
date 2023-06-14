@@ -215,4 +215,11 @@ SQL
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_CLASS, Cast::class);
     }
+    public static function create(string $originalLanguage, string $originalTitle, string $overview, string $releaseDate, int $runtime, string $tagline, string $title, int $posterId = null, int $id = null): Movie
+    {
+        $movie = new Movie();
+        $movie->setOriginalLanguage($originalLanguage)->setOriginalTitle($originalTitle)->setOverview($overview)->setReleaseDate($releaseDate)->setRuntime($runtime)->setTagline($tagline)->setTitle($title)->setPosterId($posterId)->setId($id);
+        return $movie;
+    }
+
 }
