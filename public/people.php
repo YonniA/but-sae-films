@@ -33,7 +33,7 @@ $appWebPage->appendContent(<<<HTML
                         <p>Nom : {$stmt->getName()}</p>
                         <p>Lieu de naissance : {$stmt->getPlaceOfBirth()}</p>
                         <p>Date : {$stmt->getBirthday()} - {$stmt->getDeathday()}</p>
-                        <p>Biographie : {$stmt->getBiography()}</p>
+                        <p>{$stmt->getBiography()}</p>
                     </div>
                 </div>
             <div class="movie-list">
@@ -45,10 +45,12 @@ foreach ($casts as $cast) {
             <a class='movie-list__movie' href='movie.php?movieId={$cast->getMovieId()}'>
                 <img src='image.php?imageId={$movie->getPosterId()} alt='{$movie->getTitle()}'>
                 <div class="text">
-                    <p>Titre : {$appWebPage->escapeString($movie->getTitle())}</p>
-                    <p>Date : {$appWebPage->escapeString($movie->getReleaseDate())}</p>
+                    <div class="text__header"
+                        <p>Titre : {$appWebPage->escapeString($movie->getTitle())}</p>
+                        <p>Date : {$appWebPage->escapeString($movie->getReleaseDate())}</p>
+                    </div>
+                    <p>Rôle de l'acteur : {$appWebPage->escapeString($cast->getRole())}</p>
                 </div>
-                <p>Rôle de l'acteur : {$appWebPage->escapeString($cast->getRole())}</p>
             </a>
             HTML);
 
