@@ -256,4 +256,33 @@ SQL
         }
         return $this;
     }
+    public function update(): Movie
+    {
+        $stmt = MyPdo::getInstance()->prepare(
+            <<<'SQL'
+UPDATE movie
+SET posterId = :posterId, 
+originalLanguage = :originalLanguage,
+originalTitle = :originalTitle,
+overview = :overview,
+releaseDate = :releaseDate,
+runtime = :runtime,
+tagline = :tagline,
+title = :title
+WHERE id = :id
+SQL
+        );
+        $stmt->bindValue(':posterId', $this->getPosterId(), PDO::PARAM_INT);
+        $stmt->bindValue(':originalLanguage', $this->getOriginalLanguage(), PDO::PARAM_STR);
+        $stmt->bindValue(':originalTitle', $this->getOriginalTitle(), PDO::PARAM_STR);
+        $stmt->bindValue(':overview', $this->getOverview(), PDO::PARAM_STR);
+        $stmt->bindValue(':releaseDate', $this->getReleaseDate(), PDO::PARAM_STR);
+        $stmt->bindValue(':runtime', $this->getRuntime(), PDO::PARAM_INT);
+        $stmt->bindValue(':tagline', $this->getTagline(), PDO::PARAM_STR);
+        $stmt->bindValue(':title', $this->getTitle(), PDO::PARAM_STR);
+        $stmt->bindValue(':id', $this->getId(), PDO::PARAM_INT);
+        $stmt->execute();
+
+        return $this;
+    }
 }
