@@ -33,7 +33,7 @@ $appWebPage->appendContent(<<<HTML
                         <p>Nom : {$stmt->getName()}</p>
                         <p>Lieu de naissance : {$stmt->getPlaceOfBirth()}</p>
                         <p>Date : {$stmt->getBirthday()} - {$stmt->getDeathday()}</p>
-                        <p>Biographie : {$stmt->getBiography()}</p>
+                        <p>{$stmt->getBiography()}</p>
                     </div>
                 </div>
             <div class="movie-list">
