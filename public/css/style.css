@@ -134,3 +134,21 @@ a
     flex-direction: column;
     width: 100%;
 }
+.movie-list__movie:hover
+{
+    background-color: #75b1ff;
+}
+.movie-list__movie:active
+{
+    background-color: #0c214a;
+    color: white;
+}
+.movie-list__movie
+{
+    display: flex;
+    gap: 2rem;
+    padding: 15px;
+    background-color: white;
+    border-radius: 10px;
+    transition: .15s;
+}
