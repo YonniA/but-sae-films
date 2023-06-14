@@ -119,3 +119,18 @@ a
     background-color: #0c214a;
     color: white;
 }
+.people-description
+{
+    display: flex;
+    gap: 2rem;
+    padding: 15px;
+    background-color: white;
+    border-radius: 10px;
+}
+.movie-list
+{
+    display: flex;
+    gap: 2rem;
+    flex-direction: column;
+    width: 100%;
+}
