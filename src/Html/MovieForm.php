@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Html;
 
+use Entity\Exception\ParameterException;
 use Entity\Movie;
 
 class MovieForm
@@ -73,4 +74,30 @@ HTML);
         return $webPage->toHTML();
     }
 
+    /**
+     * @return void
+     * @throws ParameterException
+     */
+    public function setEntityFromQueryString(): void
+    {
+        if (empty($_POST['title'])) {
+            throw new ParameterException('Le titre est obligatoire');
+        }
+        if(!empty($_POST['id']) && is_numeric($_POST['id'])) {
+            $id = (int)$_POST['id'];
+        } else {
+            $id = null;
+        }
+        $this->movie = Movie::create(
+            $this->stripTagsAndTrim($_POST['originalLanguage']),
+            $this->stripTagsAndTrim($_POST['originalTitle']),
+            $this->stripTagsAndTrim($_POST['overview']),
+            $this->stripTagsAndTrim($_POST['releaseDate']),
+            (int)$this->stripTagsAndTrim($_POST['runtime']),
+            $this->stripTagsAndTrim($_POST['tagline']),
+            $this->stripTagsAndTrim($_POST['title']),
+            null,
+            $id
+        );
+    }
 }
