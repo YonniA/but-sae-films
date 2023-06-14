@@ -285,4 +285,12 @@ SQL
 
         return $this;
     }
+    public function save(): Movie
+    {
+        if ($this->getId() === null) {
+            return $this->insert();
+        } else {
+            return $this->update();
+        }
+    }
 }
