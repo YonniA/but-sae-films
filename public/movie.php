@@ -26,7 +26,7 @@ $appWebPage->appendContent(<<<HTML
             <div class="list">
                 <div class="movie-description">
                     <img src='image.php?imageId={$stmt->getPosterId()}' alt='Poster de {$stmt->getTitle()}'>
-                    <div class="text">')
+                    <div class="text">
                         <div class="text__header">
                             <p>Titre : {$stmt->getTitle()}</p>
                             <p>Date : {$stmt->getReleaseDate()}</p>
