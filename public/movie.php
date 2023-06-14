@@ -34,11 +34,11 @@ $appWebPage->appendContent(<<<HTML
                         <div class="text__header">
                             <p>Titre : {$stmt->getTitle()}</p>
                             <p>Date : {$stmt->getReleaseDate()}</p>
-                    </div>
-                    <p>Nom original : {$stmt->getOriginalTitle()}</p>
-                    <p>Slogan : {$stmt->getTagline()}</p>
-                    <p>Durée : {$stmt->getRuntime()} minutes</p>
-                    <p>Résumé : {$stmt->getOverview()}</p>
+                        </div>
+                        <p>Nom original : {$stmt->getOriginalTitle()}</p>
+                        <p>Slogan : {$stmt->getTagline()}</p>
+                        <p>Durée : {$stmt->getRuntime()} minutes</p>
+                        <p>Résumé : {$stmt->getOverview()}</p>
                 </div>
             </div>
             <div class="people-list">
