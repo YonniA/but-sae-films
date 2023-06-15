@@ -224,7 +224,6 @@ SQL
 
     public function insert(): Movie
     {
-        $stmt = MyPdo::getInstance();
         if ($this->getId() === null) {
             $stmt = MyPdo::getInstance()->prepare(
                 <<<'SQL'
