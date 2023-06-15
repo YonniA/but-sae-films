@@ -292,4 +292,18 @@ SQL
             return $this->update();
         }
     }
+    public function delete(): Movie
+    {
+        $stmt = MyPdo::getInstance()->prepare(
+            <<<'SQL'
+DELETE FROM movie
+WHERE id = :id
+SQL
+        );
+        $stmt->bindValue(':id', $this->getId(), PDO::PARAM_INT);
+        $stmt->execute();
+
+        $this->setId(null);
+        return $this;
+    }
 }
