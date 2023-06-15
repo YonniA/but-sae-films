@@ -45,27 +45,27 @@ class MovieForm
         </label>
         <label for="originalTitle">
             Titre original
-            <input type="text" name="originalTitle" id="originalTitle" value="{$this->escapeString($originalTitle)}">
+            <input type="text" name="originalTitle" id="originalTitle" value="{$this->escapeString($originalTitle)}" required>
         </label>
         <label for="releaseDate">
             Date de sortie
-            <input type="date" name="releaseDate" id="releaseDate" value="{$this->escapeString($releaseDate)}">
+            <input type="date" name="releaseDate" id="releaseDate" value="{$this->escapeString($releaseDate)}" required>
         </label>
         <label for="runtime">
             Durée
-            <input type="number" name="runtime" id="runtime" value="{$runtime}">
+            <input type="number" name="runtime" id="runtime" value="{$runtime}" required>
         </label>
         <label for="tagline">
             Tagline
-            <input type="text" name="tagline" id="tagline" value="{$this->escapeString($tagline)}">
+            <input type="text" name="tagline" id="tagline" value="{$this->escapeString($tagline)}" required>
         </label>
         <label for="originalLanguage">
             Langue originale
-            <input type="text" name="originalLanguage" id="originalLanguage" value="{$this->escapeString($originalLanguage)}">
+            <input type="text" name="originalLanguage" id="originalLanguage" value="{$this->escapeString($originalLanguage)}" required>
         </label>
         <label for="overview">
             Synopsis
-            <textarea name="overview" id="overview">{$this->escapeString($overview)}</textarea>
+            <textarea name="overview" id="overview" required>{$this->escapeString($overview)}</textarea>
         </label>
         <input type="submit" value="Enregistrer">
     </form>
