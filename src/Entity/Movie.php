@@ -222,7 +222,7 @@ SQL
         return $movie;
     }
 
-    public function insert(): Movie
+    protected function insert(): Movie
     {
         if ($this->getId() === null) {
             $stmt = MyPdo::getInstance()->prepare(
@@ -255,7 +255,7 @@ SQL
         }
         return $this;
     }
-    public function update(): Movie
+    protected function update(): Movie
     {
         $stmt = MyPdo::getInstance()->prepare(
             <<<'SQL'
