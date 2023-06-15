@@ -260,8 +260,7 @@ SQL
         $stmt = MyPdo::getInstance()->prepare(
             <<<'SQL'
 UPDATE movie
-SET posterId = :posterId, 
-originalLanguage = :originalLanguage,
+SET originalLanguage = :originalLanguage,
 originalTitle = :originalTitle,
 overview = :overview,
 releaseDate = :releaseDate,
@@ -271,7 +270,6 @@ title = :title
 WHERE id = :id
 SQL
         );
-        $stmt->bindValue(':posterId', $this->getPosterId(), PDO::PARAM_INT);
         $stmt->bindValue(':originalLanguage', $this->getOriginalLanguage(), PDO::PARAM_STR);
         $stmt->bindValue(':originalTitle', $this->getOriginalTitle(), PDO::PARAM_STR);
         $stmt->bindValue(':overview', $this->getOverview(), PDO::PARAM_STR);
@@ -281,7 +279,6 @@ SQL
         $stmt->bindValue(':title', $this->getTitle(), PDO::PARAM_STR);
         $stmt->bindValue(':id', $this->getId(), PDO::PARAM_INT);
         $stmt->execute();
-
         return $this;
     }
     public function save(): Movie
