@@ -105,4 +105,24 @@ SQL
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_CLASS, Cast::class);
     }
+    public function getMovies(): array
+    {
+        $movies = [];
+        $casts = $this->getCast();
+        foreach ($casts as $cast) {
+            $movieId = $cast->getMovieId();
+            $stmt = MyPdo::getInstance()->prepare(
+                <<<SQL
+SELECT *
+FROM movie
+WHERE id = :id;
+SQL
+            );
+            $stmt->bindParam(':id', $movieId);
+            $stmt->execute();
+            $stmt->setFetchMode(PDO::FETCH_CLASS, Movie::class);
+            $movies[]=$stmt->fetch();
+        }
+        return $movies;
+    }
 }

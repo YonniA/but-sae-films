@@ -22,24 +22,28 @@ body
 {
     margin: clamp(2rem, 7vh + 1rem, 15vh);
     flex-grow: 5;
-    padding-left: 1rem;
-
     border-radius: 15pt;
     overflow: hidden;
-
     box-shadow: 10px 10px 25px #cecece,
     -15px -15px 30px #ffffff;
+
 }
 
-.list
-{
-    display:flex;
+.list {
+    display: flex;
     flex-wrap: wrap;
-    height:100%;
     overflow-y: auto;
     justify-content: space-around;
-    gap:2rem;
+    gap: 2rem;
+    height: 100%;
+    padding: 0.5rem;
 }
+
+.list:last-child
+{
+    margin-bottom: 4rem;
+}
+
 .movie
 {
     display: flex;
@@ -55,6 +59,9 @@ body
 {
     text-align: end;
     font-family: 'Roboto Light', sans-serif;
+    position:absolute;
+    bottom: 0;
+    right: 0;
 }
 
 a
@@ -87,6 +94,7 @@ a
 {
     display: flex;
     flex-direction: column;
+    flex: 1;
 }
 .text__header
 {
@@ -151,4 +159,9 @@ a
     background-color: white;
     border-radius: 10px;
     transition: .15s;
+}
+
+.people-description img, .movie-description img
+{
+    min-width: 300px;
 }

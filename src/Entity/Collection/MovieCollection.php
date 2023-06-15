@@ -13,7 +13,7 @@ class MovieCollection
     /** permet de trouver et de mettre dans une instance les films trouvés
     * @return Movie[]
      */
-    public function findAll(): array
+    public static function findAll(): array
     {
         $stmt = MyPDO::getInstance()->prepare(
             <<<'SQL'
