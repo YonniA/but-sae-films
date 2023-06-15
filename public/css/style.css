@@ -165,3 +165,80 @@ a
 {
     min-width: 300px;
 }
+
+.movie-form
+{
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    margin:auto;
+}
+
+.movie-form label, .movie-form input, .movie-form textarea
+{
+    width: 100%;
+}
+
+.navbar
+{
+    display: flex;
+    justify-content: space-between;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.navbar select, .navbar input, .navbar a
+{
+    background: #fff;
+    padding: .1rem;
+    border-radius: 5pt;
+    border: 1px solid #cecece ;
+}
+
+@media (max-width:800px){
+    :root{
+        font-size: 1.5rem;
+    }
+
+    .footer
+    {
+        font-size: .75rem;
+    }
+
+    input, textarea, select
+    {
+        font-size: 1rem;
+    }
+
+    .content
+    {
+        margin: 0;
+        margin-bottom: 1.1rem;
+    }
+    .list {
+        align-items: center;
+    }
+    .movie-description, .people-description
+    {
+        flex-direction: column;
+    }
+
+    .movie-list__movie, .people-list__people
+    {
+        flex-direction: column;
+        margin-bottom: 2rem;
+    }
+
+    .movie-form
+    {
+        width: 80%;
+    }
+
+    .navbar
+    {
+        flex-direction: column;
+        align-content: center;
+        text-align: center;
+    }
+
+}
